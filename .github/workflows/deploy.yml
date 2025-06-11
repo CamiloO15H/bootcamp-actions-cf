@@ -10,6 +10,7 @@ jobs:
             - name: Hola Mundo
               run: echo "Hola Mundo"
     second_jobs:
+        needs: first_jobs    #nombre del job para crear una referencia, indicando que el segundo job necesita al primer job
         runs-on: ubuntu-latest
 
         steps:
