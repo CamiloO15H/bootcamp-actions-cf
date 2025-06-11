@@ -5,8 +5,9 @@ on: push
 jobs:
     first_jobs:
         runs-on: ubuntu-latest
-        env:
-            NAME: ServNutresa
+
+        outputs:
+            salida: ${{ steps.step_1.outputs.my_variable }}
 
         steps:
             - name: Working dir
@@ -19,6 +20,9 @@ jobs:
     second_jobs:
         needs: first_jobs    #nombre del job para crear una referencia, indicando que el segundo job necesita al primer job para ejecutarse
         runs-on: ubuntu-latest
+
+        env:
+            SALIDA: ${{ needs.firts_job.outputs }}
 
         steps:
             - name: Hola Mundo
