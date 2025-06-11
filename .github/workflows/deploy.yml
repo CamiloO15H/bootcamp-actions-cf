@@ -10,7 +10,11 @@ jobs:
 
         steps:
             - name: Working dir
-              run: echo $GITHUB_OUTPUT
+              id: step_1    #Especificar id
+              run: echo "my_variable=Hola Mundo" >> $GITHUB_OUTPUT
+
+            - name: Obtener mensaje
+              run: echo "${{ steps.step_1.outputs.my_variable }}"   #Al dar un name se convierte automaticamente en un ID, que es el que vamos a concatenar acá
 
     second_jobs:
         needs: first_jobs    #nombre del job para crear una referencia, indicando que el segundo job necesita al primer job para ejecutarse
