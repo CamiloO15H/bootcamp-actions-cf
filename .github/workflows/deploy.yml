@@ -20,3 +20,18 @@ jobs:
                 name: archivo-test
                 path: test.log
               
+
+    second_job:
+        runs-on: ubuntu-latest  #directiva
+        needs: first_jobs   #dependencia
+
+        steps:    
+            - name: Descargar artefacto  #directiva
+              uses: actions/download-artifact@v4  #directiva para descargar artefactos
+              with:   #directiva
+                name: archivo-test   #directiva
+
+            - name: Verificar contenido del archivo
+              run: |
+                cat test.log
+
