@@ -1,0 +1,17 @@
+name: Deploy to server #directiva
+
+on: push 
+
+jobs:
+    first_jobs:
+        runs-on: ubuntu-latest
+
+        strategy:
+          matrix:
+            message: [ "Hello", "World", "from" ]
+
+        steps: 
+            - name: Print mensaje
+              run: echo "${{ matrix.message }}"
+
+    
